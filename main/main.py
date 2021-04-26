@@ -1,14 +1,8 @@
 from selenium import webdriver
 from time import sleep
-from login_page import Login
-from direct_message import Direct_Message
-from post import Post
-from like_pics import Like_Pics
-from comment import Comment
-from share import Share_post
-from respond_dm import Respond
-from watch_stories import Watch_Stories
-from like_comments import Like_Comments
+from Pages.login_page import login
+from Pages.home_page import direct_message, post, like_pics, comment, share, respond_dm, watch_stories, like_comments
+
 
 mobile_emulation = { "deviceName": "iPhone 6/7/8" }
 chrome_options = webdriver.ChromeOptions()
