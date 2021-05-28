@@ -1,3 +1,6 @@
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 from time import sleep
 
 class Like_Comments:
@@ -9,16 +12,25 @@ class Like_Comments:
 
     def like_comments(self):
 
+        # scroll to first post to make comments btn selectable:
         scroll_to = self.driver.find_element_by_xpath(self.first_pic)
         self.driver.execute_script("arguments[0].scrollIntoView();", scroll_to)
-        sleep(2)
-        self.driver.find_element_by_xpath(self.comments_btn).click()
-        sleep(2)
         try:
-            self.driver.find_element_by_xpath(self.popup).click()
-        except:
+            element = WebDriverWait(self.driver, 5).until(
+                EC.presence_of_element_located((By.XPATH, self.comments_btn))
+                )
+            element.click()
+        except: 
+            print("element not found")
+        try:
+            element = WebDriverWait(self.driver, 5).until(
+                EC.presence_of_element_located((By.XPATH, self.popup))
+                )
+            element.click()
+        except: 
             pass
-        like_btns = self.driver.find_elements_by_class_name("_8-yf5 ")
+        # likes all comments on most recent post:
+        like_btns = self.driver.find_element(By.CLASS_NAME, "_8-yf5 ")
         for like in like_btns:
             try:
                 like.click()
@@ -26,6 +38,9 @@ class Like_Comments:
                 pass
         self.driver.get("https://www.instagram.com/")
         try:
-            self.driver.find_element_by_xpath(self.popup).click()
+            element = WebDriverWait(self.driver, 5).until(
+                EC.presence_of_element_located((By.XPATH, self.popup))
+                )
+            element.click()
         except:
             pass

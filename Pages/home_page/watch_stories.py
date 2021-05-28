@@ -1,3 +1,6 @@
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 from time import sleep
 
 class Watch_Stories:
@@ -7,11 +10,14 @@ class Watch_Stories:
         self.popup = "/html/body/div[4]/div/div/div/div[3]/button[2]"
 
     def watch_stories(self):
-        self.driver.find_element_by_xpath(self.stories_btn).click()
+        self.driver.find_element(By.XPATH, self.stories_btn).click()
         # watch for 40 secs then exit:
         sleep(40)
         self.driver.get("https://www.instagram.com/")
         try:
-            self.driver.find_element_by_xpath(self.popup).click()
-        except:
+            element = WebDriverWait(self.driver, 5).until(
+                EC.presence_of_element_located((By.XPATH, self.popup))
+                )
+            element.click()
+        except: 
             pass

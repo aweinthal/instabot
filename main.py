@@ -3,14 +3,12 @@ from time import sleep
 from Pages.login_page import login
 from Pages.home_page import direct_message, post, like_pics, comment, share, respond_dm, watch_stories, like_comments
 
-
 mobile_emulation = { "deviceName": "iPhone 6/7/8" }
 chrome_options = webdriver.ChromeOptions()
 chrome_options.add_experimental_option("mobileEmulation", mobile_emulation)
-driver = webdriver.Chrome(options=chrome_options)
-driver.implicitly_wait(7)
+driver = webdriver.Chrome("C:\Program Files (x86)\chromedriver.exe", options=chrome_options)
 
-class Bot:
+class InstaBot:
     def __init__(self, driver):
         self.driver = driver
         
@@ -55,11 +53,12 @@ class Bot:
         self.driver.close()
         self.driver.quit()
 
-matt = Bot(driver)
+matt = InstaBot(driver)
 matt.login("username", "pw")
 
 try:
     matt.respond()
+    # if no new direct message to respond to: pass:
 except:
     pass
 matt.comment()
