@@ -32,7 +32,7 @@ class Comment:
         except:
             pass
         self.driver.find_element(By.XPATH, self.comment_btn).click()
-        # selects and enters random quote as comment:
+        # selects and enters random quote from 'comment' list as comment:
         self.driver.find_element(By.XPATH, self.comment_box).send_keys(rand_quote("comment"))
         self.driver.find_element(By.XPATH, self.post_btn).click()
         self.driver.get("https://www.instagram.com/")
