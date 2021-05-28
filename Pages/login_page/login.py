@@ -34,7 +34,7 @@ class Login:
             pass
         try:
             element = WebDriverWait(self.driver, 5).until(
-                EC.presence_of_element_located((By.XPATH, self.popup_btn3))
+                EC.presence_of_element_located((By.XPATH, self.popup_btn1))
                 )
             element.click()
         except:

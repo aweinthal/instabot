@@ -13,7 +13,7 @@ class Like_Comments:
     def like_comments(self):
 
         # scroll to first post to make comments btn selectable:
-        scroll_to = self.driver.find_element_by_xpath(self.first_pic)
+        scroll_to = self.driver.find_element(By.XPATH, self.first_pic)
         self.driver.execute_script("arguments[0].scrollIntoView();", scroll_to)
         try:
             element = WebDriverWait(self.driver, 5).until(
