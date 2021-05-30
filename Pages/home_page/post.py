@@ -2,7 +2,7 @@ from selenium.webdriver.common.by import By
 import autoit
 from time import sleep
 import random
-from Functions.matt_quotes import rand_quote
+from Functions.random_quotes import rand_quote
 
 class Post:
     def __init__(self, driver):

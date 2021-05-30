@@ -1,7 +1,7 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from Functions.matt_quotes import rand_quote
+from Functions.random_quotes import rand_quote
 
 class Comment:
     def __init__(self,driver):
